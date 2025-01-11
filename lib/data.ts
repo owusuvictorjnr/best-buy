@@ -34,27 +34,62 @@ const data = {
     },
   ],
   carousels: [
+
     {
-      title: "Most Popular Shoes For Sale",
-      buttonCaption: "Shop Now",
-      image: "/images/banner3.png",
-      url: "/search?category=Shoes",
-      isPublished: true,
-    },
+        title: "Most Popular Shoes For Sale",
+        buttonCaption: "Shop Now",
+        image: "/images/appleBanner.jpg",
+        url: "/search?category=Shoes",
+        isPublished: true,
+      },
+  
+
     {
-      title: "Best Sellers in T-Shirts",
-      buttonCaption: "Shop Now",
-      image: "/images/banner1.png",
-      url: "/search?category=T-Shirts",
-      isPublished: true,
-    },
+        title: "Best Sellers in jeans",
+        buttonCaption: "Shop Now",
+        image: "/images/jeansBanner2.jpg",
+        url: "/search?category=T-Shirts",
+        isPublished: true,
+      },
+  
     {
       title: "Best Deals on Wrist Watches",
       buttonCaption: "See More",
-      image: "/images/banner2.png",
+      image: "/images/padBanner3.jpg",
       url: "/search?category=Wrist Watches",
       isPublished: true,
     },
+   
+      {
+        title: "Best Sellers in T-Shirts",
+        buttonCaption: "Shop Now",
+        image: "/images/sneakerBanner2.jpg",
+        url: "/search?category=T-Shirts",
+        isPublished: true,
+      },
+  
+      {
+        title: "Best Sellers in Shirts",
+        buttonCaption: "Shop Now",
+        image: "/images/tshirtBanner1.jpg",
+        url: "/search?category=T-Shirts",
+        isPublished: true,
+      },
+     
+      {
+        title: "Best Sellers in Tops",
+        buttonCaption: "Shop Now",
+        image: "/images/watchBanner4.jpg",
+        url: "/search?category=T-Shirts",
+        isPublished: true,
+      },
+      {
+        title: "Best Sellers in watches",
+        buttonCaption: "Shop Now",
+        image: "/images/watchBanner5.jpg",
+        url: "/search?category=T-Shirts",
+        isPublished: true,
+      },
   ],
 };
 
