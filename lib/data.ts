@@ -508,7 +508,7 @@ const products: IProductInput[] = [
     slug: toSlug("Fossil Men's Machine Stainless Steel Quartz Watch"),
     category: "Wrist Watches",
     brand: "Fossil",
-    images: ["/images/watch11.jpg", "/images/watch13.jpg"],
+    images: ["/images/watch13.jpg", "/images/watch11.jpg"],
     tags: ["best-seller", "todays-deal"],
     isPublished: true,
     price: 158.21,
