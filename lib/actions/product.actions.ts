@@ -1,8 +1,10 @@
 "use server";
 
 import { connectDataBase } from "../db";
-import Product from "../db/models/product.model";
+import Product, { IProduct } from "../db/models/product.model";
 
+// This function retrieves a list of unique categories
+// from the database where the product is published.
 export async function getAllCategories() {
   await connectDataBase();
   const categories = await Product.find({ isPublished: true }).distinct(
@@ -11,6 +13,8 @@ export async function getAllCategories() {
   return categories;
 }
 
+// retrieves a list of products from a database, filtered by
+// a specific tag and sorted by creation date.
 export async function getAllProductsForCard({
   tag,
   limit = 4,
@@ -38,4 +42,27 @@ export async function getAllProductsForCard({
     href: string;
     image: string;
   }[];
+}
+
+
+
+// This function retrieves a list of products from the 
+// database that match a given tag and are published. 
+// It returns up to a specified limit (default 10) of products, 
+// sorted by creation date in descending order.
+export async function getProductsByTag({
+  tag,
+  limit = 10,
+}: {
+  tag: string;
+  limit?: number;
+}) {
+  await connectDataBase();
+  const products = await Product.find({
+    tags: { $in: [tag] },
+    isPublished: true,
+  })
+    .sort({ createdAt: "desc" })
+    .limit(limit);
+  return JSON.parse(JSON.stringify(products)) as IProduct[];
 }
