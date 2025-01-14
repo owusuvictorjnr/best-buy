@@ -79,7 +79,7 @@ export default async function Home() {
 
   return (
     <>
-      <HomeCarousel items={data.carousels} />;
+      <HomeCarousel items={data.carousels} />
       <div className="md:p-4 md:space-y-4 bg-border">
         <HomeCard cards={cards} />
 
