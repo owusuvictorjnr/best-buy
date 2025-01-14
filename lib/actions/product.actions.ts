@@ -1,5 +1,6 @@
 "use server";
 
+import { PAGE_SIZE } from "../constants";
 import { connectDataBase } from "../db";
 import Product, { IProduct } from "../db/models/product.model";
 
@@ -44,11 +45,9 @@ export async function getAllProductsForCard({
   }[];
 }
 
-
-
-// This function retrieves a list of products from the 
-// database that match a given tag and are published. 
-// It returns up to a specified limit (default 10) of products, 
+// This function retrieves a list of products from the
+// database that match a given tag and are published.
+// It returns up to a specified limit (default 10) of products,
 // sorted by creation date in descending order.
 export async function getProductsByTag({
   tag,
@@ -65,4 +64,44 @@ export async function getProductsByTag({
     .sort({ createdAt: "desc" })
     .limit(limit);
   return JSON.parse(JSON.stringify(products)) as IProduct[];
+}
+
+export async function getProductBySlug(slug: string) {
+  await connectDataBase();
+  const product = await Product.findOne({ slug, isPublished: true });
+  if (!product) throw new Error("Product not found");
+  return JSON.parse(JSON.stringify(product)) as IProduct;
+}
+
+export async function getRelatedProductsByCategory({
+  category,
+  productId,
+  limit = PAGE_SIZE,
+  page = 1,
+}: {
+  category: string;
+  productId: string;
+  limit?: number;
+  page: number;
+}) {
+  await connectDataBase();
+  const skipAmount = (Number(page) - 1) * limit;
+  const conditions = {
+    isPublished: true,
+    category,
+    _id: {
+      $ne: productId,
+    },
+  };
+
+  const products = await Product.find(conditions)
+    .sort({ numSales: "desc" })
+    .skip(skipAmount)
+    .limit(limit);
+  const productsCount = await Product.countDocuments(conditions);
+
+  return {
+    data: JSON.parse(JSON.stringify(products)) as IProduct[],
+    totalPages: Math.ceil(productsCount / limit),
+  };
 }
