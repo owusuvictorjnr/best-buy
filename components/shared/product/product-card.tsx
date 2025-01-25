@@ -41,7 +41,7 @@ const ProductCard = ({
               alt={product.name}
               fill
               sizes="80vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         )}
