@@ -85,12 +85,15 @@ export default async function Home() {
         <HomeCard cards={cards} />
 
         {/* Product Slider */}
+
+        {/* Today's Deals */}
         <Card className="rounded-none w-full">
           <CardContent className="p-4 items-center gap-3">
             <ProductSlider title={"Today's Deals"} products={todaysDeals} />
           </CardContent>
         </Card>
 
+        {/* Best Selling Products */}
         <Card className="rounded-none w-full">
           <CardContent className="p-4 items-center gap-3">
             <ProductSlider
