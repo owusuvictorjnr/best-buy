@@ -66,6 +66,7 @@ export async function getProductsByTag({
   return JSON.parse(JSON.stringify(products)) as IProduct[];
 }
 
+// Get one product by its slug
 export async function getProductBySlug(slug: string) {
   await connectDataBase();
   const product = await Product.findOne({ slug, isPublished: true });
@@ -73,6 +74,7 @@ export async function getProductBySlug(slug: string) {
   return JSON.parse(JSON.stringify(product)) as IProduct;
 }
 
+// Get related products ie. products in the same category
 export async function getRelatedProductsByCategory({
   category,
   productId,
@@ -105,3 +107,4 @@ export async function getRelatedProductsByCategory({
     totalPages: Math.ceil(productsCount / limit),
   };
 }
+ 
