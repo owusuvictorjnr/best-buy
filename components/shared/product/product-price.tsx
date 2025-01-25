@@ -22,6 +22,7 @@ const ProductPrice = ({
   const [inValue, floatValue] = stringValue.includes(".")
     ? stringValue.split(".")
     : [stringValue, ""];
+
   return plain ? (
     formatCurrency(price)
   ) : listPrice == 0 ? (
