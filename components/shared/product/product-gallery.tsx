@@ -16,8 +16,8 @@ export default function ProductGallery({ images }: { images: string[] }) {
             onClick={() => setSelectedImage(index)}
             onMouseOver={() => setSelectedImage(index)}
             className={`bg-white rounded-lg overflow-hidden ${
-              index === selectedImage
-                ? "ring-2 ring-blue-5`"
+              selectedImage === index
+                ? "ring-2 ring-blue-500"
                 : "ring-1 ring-gray-300"
             }`}
           >
